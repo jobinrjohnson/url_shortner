@@ -23,9 +23,11 @@
 
 
                 <form method="post" action="api/shorten">
-                    <div class="form-group">
-                        <input type="url" class="form-control" name="link" id="linkControl"
+                    <div class="form-group" id="link_container">
+                        <input type="url" class="form-control" name="link" id="linkControl" required
                             placeholder="Link to Shorten, eg: https://..">
+                        <div class="invalid-feedback" id="invalid_feedback">
+                        </div>
                     </div>
                     <input type="submit" class="btn btn-primary">
                 </form>
@@ -52,10 +54,20 @@
             $.post(
                 'api/shorten',
                 { link: $("#linkControl").val().trim() },
-                function (response) {
-                    console.log(response);
-                }
-            )
+            ).done(function (response) {
+                console.log(response);
+            })
+                .fail(function (error_response) {
+                    $("#linkControl").addClass("is-invalid");
+                    if (error_response.responseJSON.errors != undefined) {
+                        var errors = "";
+                        error_response.responseJSON.errors.link.forEach(element => {
+                            errors += '<li>' + element + '</li>';
+                        });
+                        console.log(errors);
+                        $("#invalid_feedback").html(errors);
+                    }
+                })
 
         });
     </script>
