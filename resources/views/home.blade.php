@@ -21,7 +21,7 @@
             <div class="card-body">
 
 
-                <form method="post" action="shorten">
+                <form method="post" action="api/shorten">
                     <div class="form-group">
                         <input type="url" class="form-control" name="link" placeholder="Link to Shorten, eg: https://..">
                     </div>
