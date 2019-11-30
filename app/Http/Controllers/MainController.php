@@ -28,4 +28,14 @@ class MainController extends Controller
 
         return $shortned;
     }
+
+    public function redirect($url)
+    {
+        $key = Shortner::isKeyExistsInDB($url);
+        if($key === false){
+            abort(404);
+            return;
+        }
+        return redirect($key->url_original);
+    }
 }

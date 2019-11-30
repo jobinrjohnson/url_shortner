@@ -22,10 +22,10 @@ class Shortner extends Model
     }
 
 
-    public function isKeyExistsInDB($shortned)
+    public static function isKeyExistsInDB($shortned)
     {
-        $res = self::where('url_short', $shortned);
-        return count($res) > 0 ? $res[0] : null;
+        $res = self::where('url_short', $shortned)->get();
+        return count($res) > 0 ? $res[0] : false;
     }
 
     public static function storeUrl($original, $shortned)

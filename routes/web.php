@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'MainController@index');
+Route::get('{id}', 'MainController@redirect');
 
 Route::post("shorten","MainController@shorten");
