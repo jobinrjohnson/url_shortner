@@ -15,4 +15,24 @@ class Shortner extends Model
     ];
 
 
+    public static function isLinkAlreadyExistsInDB($link)
+    {
+        $res = self::where('url_original', $link)->get();
+        return count($res) > 0 ? $res[0] : null;
+    }
+
+
+    public function isKeyExistsInDB($shortned)
+    {
+        $res = self::where('url_short', $shortned);
+        return count($res) > 0 ? $res[0] : null;
+    }
+
+    public static function storeUrl($original, $shortned)
+    {
+        return self::create([
+            'url_original'      => $original,
+            'url_short'         => $shortned
+        ]);
+    }
 }
