@@ -42,6 +42,9 @@
             text-decoration: none;
             color: #441515;
         }
+        .btn-primary{
+            background: #3a3a3a;
+        }
     </style>
 
 </head>
@@ -65,7 +68,7 @@
                             </div>
                         </div>
                         <div class="col-auto pl-0 mr-0">
-                            <input type="submit" class="btn btn-primary btn-lg" value="Shorten">
+                            <input type="submit" class="btn btn-primary btn-lg" value="Shorten" style="background: #3a3a3a;">
                         </div>
                     </div>
                 </form>
@@ -81,7 +84,8 @@
             <br><br>
             <p>Hey, Here is the shortned URL</p>
             <h1><a href="" class="shorned_url" class="shortned_final" target="_blank"></a></h1>
-            <br><br><br>
+            <br>
+            <br><br>
         </div>
 
     </div>
