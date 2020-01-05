@@ -8,7 +8,7 @@ class ShortenHelper
     {
         $short_url = "";
         do {
-            $short_url = substr(uniqid(),0,5);
+            $short_url = base_convert(time(), 10, 36).''.rand(0,9);
         } while (false);
         return $short_url;
     }
